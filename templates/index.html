@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - List of Fruits</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>List of Fruits</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        {% for fruit in fruits %}
+        <tr>
+            <td>{{ fruit.id }}</td>
+            <td>{{ fruit.name }}</td>
+            <td>{{ fruit.quantity }}</td>
+            <td>
+                <a href="{{ url_for('edit', id=fruit.id) }}">Edit</a>
+                <a href="{{ url_for('delete', id=fruit.id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('add') }}">Add Fruit</a>
+</body>
+</html>
